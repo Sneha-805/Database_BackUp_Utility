@@ -1,0 +1,23 @@
+# Maven
+target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Environment variables / secrets
+.env
+*.env
+
+# Database backups
+backups/
+*.sql
+*.sql.gz
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
