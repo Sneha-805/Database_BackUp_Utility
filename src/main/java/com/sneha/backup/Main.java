@@ -62,9 +62,20 @@ public class Main {
                     }
                     Path selectedBackup =
                             backupFiles.get(backupChoice - 1);
+
                     System.out.println(
                             "Selected backup: " + selectedBackup.getFileName()
                     );
+                    System.out.print(
+                            "Are you sure you want to restore this backup? (y/n): "
+                    );
+
+                    String confirmation = scanner.next();
+
+                    if (!confirmation.equalsIgnoreCase("y")) {
+                        System.out.println("Restore cancelled.");
+                        break;
+                    }
                     RestoreService restoreService = new RestoreService();
 
                     restoreService.restoreBackup(selectedBackup.toString());
