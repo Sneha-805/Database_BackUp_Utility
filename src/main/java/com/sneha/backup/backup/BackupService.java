@@ -50,7 +50,7 @@ public class BackupService {
                     DatabaseConfig.PASSWORD
             );
 
-            // 5. Send mysqldump output directly to the backup file
+            // 5. Compress mysqldump output and write it to the backup file
 
 
             // 6. Show errors in IntelliJ console
@@ -97,6 +97,11 @@ public class BackupService {
                 System.out.println(
                         "Backup failed. Exit code: "
                                 + exitCode
+                );
+                Files.deleteIfExists(backupFile);
+
+                System.out.println(
+                        "Incomplete backup file was removed."
                 );
             }
 
