@@ -13,4 +13,9 @@ public class DatabaseConfig {
 
     public static final String PASSWORD =
             System.getenv("DB_PASSWORD");
+
+    public static final String DATABASE =
+            "backup_demo";
+    public static final String MYSQL_PATH =
+            "C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe";
 }
