@@ -71,7 +71,10 @@ public class Main {
                     return;
 
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println(
+                            "Invalid choice. Please enter 1, 2, or 3."
+                    );
+                    break;
             }
         }
 
