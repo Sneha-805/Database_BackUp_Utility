@@ -8,12 +8,27 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-    public static Connection getConnection() throws SQLException {
+    private final DatabaseConfig databaseConfig;
+
+    public DatabaseConnection(DatabaseConfig databaseConfig) {
+        this.databaseConfig = databaseConfig;
+    }
+
+    public Connection getConnection() throws SQLException {
 
         return DriverManager.getConnection(
-                DatabaseConfig.URL,
-                DatabaseConfig.USERNAME,
-                DatabaseConfig.PASSWORD
+                databaseConfig.getUrl(),
+                databaseConfig.getUsername(),
+                databaseConfig.getPassword()
+        );
+    }
+
+    public Connection getServerConnection() throws SQLException {
+        return DriverManager.getConnection(
+                "jdbc:mysql://" + databaseConfig.getHost()
+                        + ":" + databaseConfig.getPort() + "/",
+                databaseConfig.getUsername(),
+                databaseConfig.getPassword()
         );
     }
 }
