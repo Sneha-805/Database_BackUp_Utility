@@ -2,20 +2,66 @@ package com.sneha.backup.config;
 
 public class DatabaseConfig {
 
-    public static final String URL =
-            "jdbc:mysql://localhost:3306/backup_demo";
+    private final String host;
+    private final String port;
+    private final String databaseName;
+    private final String username;
+    private final String password;
+    private final String mysqlPath;
+    private final String mysqldumpPath;
 
-    public static final String DATABASE_NAME =
-            "backup_demo";
+    public DatabaseConfig(
+            String host,
+            String port,
+            String databaseName,
+            String username,
+            String password,
+            String mysqlPath,
+            String mysqldumpPath
+    ) {
+        this.host = host;
+        this.port = port;
+        this.databaseName = databaseName;
+        this.username = username;
+        this.password = password;
+        this.mysqlPath = mysqlPath;
+        this.mysqldumpPath = mysqldumpPath;
+    }
 
-    public static final String USERNAME =
-            "root";
+    public String getHost() {
+        return host;
+    }
 
-    public static final String PASSWORD =
-            System.getenv("DB_PASSWORD");
+    public String getPort() {
+        return port;
+    }
 
-    public static final String DATABASE =
-            "backup_demo";
-    public static final String MYSQL_PATH =
-            "C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe";
+    public String getDatabaseName() {
+        return databaseName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getMysqlPath() {
+        return mysqlPath;
+    }
+
+    public String getMysqldumpPath() {
+        return mysqldumpPath;
+    }
+
+    public String getUrl() {
+        return "jdbc:mysql://"
+                + host
+                + ":"
+                + port
+                + "/"
+                + databaseName;
+    }
 }
