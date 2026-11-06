@@ -20,6 +20,37 @@ java -jar target\database-backup-utility-1.0-SNAPSHOT.jar
 
 The packaged JAR includes the application's Maven runtime dependencies. The MySQL command-line tools are external requirements and are not bundled.
 
+## Run on a new Windows computer
+
+You can run the utility from a prebuilt JAR or build it from source. In both cases, the computer needs Java 17 or newer, access to a MySQL server, and the MySQL command-line tools `mysql` and `mysqldump`. The MySQL tools are not included in the JAR.
+
+### Option 1: Run the prebuilt JAR
+
+1. Copy `target\database-backup-utility-1.0-SNAPSHOT.jar` to the new computer.
+2. Open PowerShell in the folder containing the JAR.
+3. Run:
+
+   ```powershell
+   java -jar .\database-backup-utility-1.0-SNAPSHOT.jar
+   ```
+
+### Option 2: Build from source
+
+Install Git, Java 17 or newer, and Maven 3.8 or newer. Then open PowerShell and run:
+
+```powershell
+git clone https://github.com/Sneha-805/Database_BackUp_Utility.git
+cd .\Database_BackUp_Utility
+mvn clean package
+java -jar .\target\database-backup-utility-1.0-SNAPSHOT.jar
+```
+
+### First launch
+
+Enter the MySQL host and port (defaults are `localhost` and `3306`), database name, username, and password. Choose **1** to create a backup or **2** to restore one. Backups are saved in a `backups` folder under the current working directory by default.
+
+Restoring can modify database contents. Test with a separate database before restoring important data, and make sure the MySQL account has the required permissions.
+
 At startup, enter the database host (default `localhost`), port (default `3306`), database name, username, and password. Password input is hidden when launched from a terminal that supports a Java console. The application locates MySQL tools using environment overrides first, then common Windows MySQL Server and XAMPP install paths:
 
 | Environment variable | Purpose |
